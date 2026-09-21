@@ -4,7 +4,7 @@ async function connectDB() {
   const uri = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/smart_bus_tracker";
   try {
     await mongoose.connect(uri);
-    console.log("MongoDB connected:", uri);
+    console.log("MongoDB connected:", uri.replace(/\/\/[^@]+@/, "//<hidden>@"));
   } catch (err) {
     console.error("MongoDB connection error:", err.message);
     process.exit(1);
